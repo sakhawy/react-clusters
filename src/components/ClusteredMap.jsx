@@ -14,7 +14,8 @@ const ClusteredMap = () => {
 
 	useEffect(() => {
 		let temp = [];
-		for (var i=0; i<=50; i++){
+		// 50 random points near the center
+		for (var i=0; i<50; i++){
 			temp.push([
 					center[0] + (Math.random() * 2) * Math.pow(-1, i),  
 					center[1] + (Math.random() * 2) * Math.pow(-1, i)
@@ -43,7 +44,6 @@ const ClusteredMap = () => {
 					
 					{
 					
-					// 50 random points near the center
 					randomPoints.map(
 						(item, index) => <Marker 
 							position={ randomPoints[index] } 
@@ -52,7 +52,11 @@ const ClusteredMap = () => {
 								html: `<span style="font-size: 100px">1</span>`,
 								className: 'marker-cluster-custom',
 								iconSize: L.point(40, 40, true),
-						}) } />)
+						}) } >
+							<Popup>
+								A pretty popup.
+							</Popup>
+						</Marker>)
 						
 					}
 				</MarkerClusterGroup>;
